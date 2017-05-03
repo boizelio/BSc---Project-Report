@@ -1,22 +1,27 @@
-# BSc---Project-Report
-installing and configuring a virtual machine hosting a LAMP stack
+## BSc---Project-Report
 
-Introduction
+### **Introduction**
+
 This report is about installing and configuring a virtual machine hosting a LAMP stack, an open-source Web development platform, that uses Linux as the operating system, Apache as the Web server, MySQL as the RDBMS and PHP as the object-oriented scripting language.
 The report presentes the step-by-step from Configuring and deploying of the virtual machine to the introdction of the wordpress interface.
-Virtualization concept
+
+###**Virtualization concept**
+
 To fully understand the concept of technology, develop a parallel between what is real and what is virtual. Following this line of reasoning, something real physical, concrete qualities; The virtual is associated with what is simulated, abstract. In this way, a virtualization can be defined as a creation of a virtual environment that simulates a real environment, propitiating a use of several systems and applications without a physical physical need on a qualified host machine ....
 In layman's terms virtualization is often:
  	-The creation of many virtual resources from one physical resource.
 -The creation of one virtual resource from one or more physical resource
-Virtual box concept
+
+###**Virtual box concept**
+
 O VirtualBox é um “software de virtualização” que permite instalar e executar diferentes sistemas operacionais em um único computador. Ou seja, computadores virtuais a correr dentro de um unico computador real. Será utilizado o Virtual Box para a criação da maquina virutal deste projeto.
 Web server and Apache
 Web servers are responsible for storing and exchanging information with other machines. Because of this, at least two participants are involved in each exchange of information: one customer, who requests information, and one server, who responds to those requests. Each side also requires a specialized program to negotiate an exchange of data; In the case of the client, a browser like Internet Explorer is used.
 On the server side there are several software options available, but all have a similar task: negotiate transfers of data between clients and servers via Hypertext Transfer Protocol (HTTP), the Web communications protocol. The software depends on the chosen operating system To the server. For example, Microsoft IIS is a popular choice for Windows, and Unix fans already choose Apache.
 Like any type server, Apache is responsible for providing pages and all resources that can be accessed by the user. Sending of emails, messages, online purchases and several others. What's worth noting is that Apache is, after all, distributed under a GNU license, that is, free.
 
-Configuration of the virtual machine
+###**Configuration of the virtual machine**
+
 1.	On the Virtual Box main screen, click the "New" button.
 2.	The next step will be to give a name to the virtual machine and choose the type of the operating system. I gave the name of Ubunto, in Operating System I chose Linux and in version, extremely important step, I chose the 32 Bits version.
 3.	Click “Next” and select the amount of memory for the new environment. Here I will leave with 2 Gigabytes (1048 Megabytes), but one tip is not to exceed 50% of the total memory of your computer.
@@ -31,14 +36,16 @@ In order to save more space, I left the first option selected.
 9.	Inside "Storage", Click the "Empty" item that is below the optical disc controller (CD / DVD icon). Once this is done, click the arrow next to the "Optical Drive" field. In the menu that appears, click on the "Select Virtual Optical Disc File" option to use an ISO image. You will then be presented with a screen where you should inform where the ISO image is, select and then click the "Open" button.
 Finally, the virtual machine was created and configured.
 
-Configuration and deployment of the Ubunto server
+###**Configuration and deployment of the Ubunto server**
+
 Running the virtual machine, the Ubuntu install file will boot up. Continue through the setup selecting the appropriate settings. After setup has been configured, enter the hostname which I picked the name "Web-server".
 Follow the instructions on the screen to setup the username and password. Take notes of both. 
 Choose a guided partition and the volume of the entire disk. Confirm changes to the disk in the subsequent menus and installation should start. The machine should reboot when finished.
 When it restarts, it prompts you for the login details. After successfully logged in, take a snapshot to save all configuration that has been done.
 The Ubuntu Server is now installed.
 
-Configuring and Deploying Apache 2
+###**Configuring and Deploying Apache 2**
+
 1.	Before starting the installation of Apache2, check if there is an update using:
 (All commands with "sudo" are run with root privileges.)
 Sudo apt-get update
@@ -58,7 +65,8 @@ sudo mysql_secure_installation
 Must be pressed "Y" and / or pressed the "Enter" key for each prompt. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes that have been made.
 4.	The database system is now configured
 
-Configuring and Deploying PHP
+###**Configuring and Deploying PHP**
+
 1.	Use the following command to install PHP:
 sudo apt-get install php7.0 php7.0-mysql libapache2-mod-php7.0 php7.0-cli php7.0-cgi php7.0-gd
 2.	Delete the index.html file at the the directory “/var/www/html” (using cd command to get there) so that Apache will first read index.php file instead.
@@ -71,7 +79,9 @@ phpinfo();
 5.	Press “ESC” and “:wq” to save it.
 6.	Open the web browser and type “localhost/info.php”. A page containing configuration information must be showed.
 7.	PHP is finalized.
-Configuring and Deploying Wordpress
+
+###**Configuring and Deploying Wordpress**
+
 1.	To get started, log into the MySQL root (administrative) account by issuing this command:
 mysql -u root -p
 2.	After logged in, create a separate database that WordPress can control using the following command:
@@ -117,8 +127,9 @@ Ctrl+F5
 4.	Create an initial administrator account. Take notes of it.
 5.	WordPress will confirm the installation, and then ask to log in. Hit the button at the bottom and then fill out the account information.
 6.	The WordPress interface will be presented and can be modificate as wish.
-Conclusion
+
+###**Conclusion**
+
 The project provides a practical overview that the lessons can not. All goals were met despite some minor problems. In order to avoid some of the problems, some observations will be added.
 Obs1 - Before any installation, make a backup system (snapshot). If something goes wrong, the system can get back to previous settings and not be compromised with the error.
 Obs2 - Make notes of all users and passwords created. This can save you lots of troubles. (Make notes of everything basically).
-
