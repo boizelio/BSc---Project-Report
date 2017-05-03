@@ -49,6 +49,9 @@ Finally, the virtual machine was created and configured.
 
 ## **Configuration and deployment of the Ubunto server**
 
+![virtualbox-ubuntu-645x442.png]({{site.baseurl}}/virtualbox-ubuntu-645x442.png)
+
+
 Running the virtual machine, the Ubuntu install file will boot up. Continue through the setup selecting the appropriate settings. After setup has been configured, enter the hostname which I picked the name "Web-server".
 
 Follow the instructions on the screen to setup the username and password. Take notes of both. 
