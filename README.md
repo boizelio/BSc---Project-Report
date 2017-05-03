@@ -212,6 +212,9 @@ PHP is finalized.
 
 The WordPress interface will be presented and can be modificate as wish.
 
+![admin_interface.png]({{site.baseurl}}/admin_interface.png)
+
+
 ## **Conclusion**
 
 The project provides a practical overview that the lessons can not. All goals were met despite some minor problems. In order to avoid some of the problems, some observations will be added.
