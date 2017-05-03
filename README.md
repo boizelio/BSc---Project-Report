@@ -79,6 +79,9 @@ Now, starting the Apache 2
     
 3.	To verify that everything went as planned, enter the public IP address of the server (localhost) in the browser. The default apache page should appear.
 
+![small_apache_default.png]({{site.baseurl}}/small_apache_default.png)
+
+
 ## **Configuring and Deploying MySQL**
 
 1.	To install MySQL database server enter the following command:
@@ -118,6 +121,9 @@ The database system is now configured
 5.	Press “ESC” and “:wq” to save it.
 
 6.	Open the web browser and type “localhost/info.php”. A page containing configuration information must be showed.
+
+![small_php_info.png]({{site.baseurl}}/small_php_info.png)
+
 
 PHP is finalized.
 
