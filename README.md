@@ -176,16 +176,16 @@ PHP is finalized.
     
 11.	Change the parameters with the information for the database created:
 
-	/** The name of the database for WordPress **/
+	**/* The name of the database for WordPress */**
     
 	define('DB_NAME', 'wordpress');
     
-	/** MySQL database username **/
+	**/* MySQL database username */**
     
 	define('DB_USER', 'wordpressuser');
 
 
-	/** MySQL database password **/
+	**/* MySQL database password */**
     
 	define('DB_PASSWORD', 'password');
     
