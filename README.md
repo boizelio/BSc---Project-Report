@@ -62,13 +62,19 @@ The Ubuntu Server is now installed.
 
 1.	Before starting the installation of Apache2, check if there is an update using:
 (All commands with "sudo" are run with root privileges.)
+
 	Sudo apt-get update
+    
 And then install Apache2 using:
+
 	Sudo apt-get install apache2
     
 2.	Changing the setting to the apache 2 start up at system boot. It'll run automatically  when the virtual machine gets on.
+
 	sudo systemctl enable apache2
+  
 Now, starting the Apache 2
+
 	sudo systemctl start apache2
     
 3.	To verify that everything went as planned, enter the public IP address of the server (localhost) in the browser. The default apache page should appear.
@@ -76,11 +82,13 @@ Now, starting the Apache 2
 ## **Configuring and Deploying MySQL**
 
 1.	To install MySQL database server enter the following command:
+
 	sudo apt-get install mysql-server
     
 2.	During installation, the server will ask to select and confirm the password for the "root" MySQL user. Make notes of both.
 
 3.	Run a simple security script that removes some dangerous patterns and slightly block access to our database system.
+
 	sudo mysql_secure_installation
     
 Must be pressed "Y" and / or pressed the "Enter" key for each prompt. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes that have been made.
@@ -90,16 +98,21 @@ The database system is now configured
 ## **Configuring and Deploying PHP**
 
 1.	Use the following command to install PHP:
+
 	sudo apt-get install php7.0 php7.0-mysql libapache2-mod-php7.0 php7.0-cli php7.0-cgi php7.0-gd
     
 2.	Delete the index.html file at the the directory “/var/www/html” (using cd command to get there) so that Apache will first read index.php file instead.
 
 3.	Type the command the following command to test that PHP is working:
+
 	sudo vi /var/www/html/info.php
     
 4.	Then press "i" key to allow editing the file. Then enter the code:
+
 	<?php
+    
 	phpinfo();
+    
 	?>
     
 5.	Press “ESC” and “:wq” to save it.
@@ -111,62 +124,84 @@ PHP is finalized.
 ## **Configuring and Deploying Wordpress**
 
 1.	To get started, log into the MySQL root (administrative) account by issuing this command:
+
 	mysql -u root -p
     
 2.	After logged in, create a separate database that WordPress can control using the following command:
+
 	CREATE DATABASE wordpress;
     
 3.	To create a separate MySQL user account that is used exclusively to operate on the new database. This is the command:
+
 	CREATE USER matheuswpress@localhost IDENTIFIED BY 'password';
     
 4.	Granting the user account access to the new database with this command:
+
 	GRANT ALL PRIVILEGES ON wordpress.* TO matheuswpress@localhost;
     
 5.	Following the next step:
+
 	FLUSH PRIVILEGES;
+    
 	Exit
     
 6.	Back to the regular command prompt, get wordpress downloaded by using:
+
 	wget -c http://wordpress.org/latest.tar.gz
     
 7.	Extracting the files to rebuild the WordPress directory:
+
 	tar xzvf latest.tar.gz
     
 8.	Moving the wordpress unpacked:
+
 	cd ~/wordpress
     
 9.	copy it to the default configuration file location to get WordPress to recognize the file:
+
 	cp wp-config-sample.php wp-config.php
     
 10.	Open it in a text editor:
+
 	nano wp-config.php
     
 11.	Change the parameters with the information for the database created:
+
 	/** The name of the database for WordPress **/
+    
 	define('DB_NAME', 'wordpress');
+    
 	/** MySQL database username **/
+    
 	define('DB_USER', 'wordpressuser');
+    
 	/** MySQL database password **/
+    
 	define('DB_PASSWORD', 'password');
     
 12.	Save and close the file.
 
 13.	Transfer the WordPress files into Apache's document root by typing:
+
 	sudo rsync -av wordpress/* /var/www/html/ 
     
 14.	Giving ownership of the word files to the web server (called www-data) :
+
 	sudo chown -R www-data:www-data /var/www/html
     
 15.	Changing permissions to allow anyone to read and execute the file:
+
 	sudo chmod -R 755 /var/www/html
     
 ## **Configure the wordpress site**
 
 1.	Restart the web server and MySQL service to allow changes to take affect:
+
 	sudo systemctl restart apache2.service
 	sudo systemctl restart mysql.service
     
 2.	Go to the address http://localhost:80/wp-config.php . In case it doesn’t work type:
+
 	Ctrl+F5
     
 3.	WordPress initial configuration page Will be shown.
@@ -180,5 +215,5 @@ The WordPress interface will be presented and can be modificate as wish.
 ## **Conclusion**
 
 The project provides a practical overview that the lessons can not. All goals were met despite some minor problems. In order to avoid some of the problems, some observations will be added.
-Obs1 - Before any installation, make a backup system (snapshot). If something goes wrong, the system can get back to previous settings and not be compromised with the error.
-Obs2 - Make notes of all users and passwords created. This can save you lots of troubles. (Make notes of everything basically).
+**Obs1** - Before any installation, make a backup system (snapshot). If something goes wrong, the system can get back to previous settings and not be compromised with the error.
+**Obs2** - Make notes of all users and passwords created. This can save you lots of troubles. (Make notes of everything basically).
