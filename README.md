@@ -183,7 +183,8 @@ PHP is finalized.
 	/** MySQL database username **/
     
 	define('DB_USER', 'wordpressuser');
-    
+
+
 	/** MySQL database password **/
     
 	define('DB_PASSWORD', 'password');
@@ -227,5 +228,7 @@ The WordPress interface will be presented and can be modificate as wish.
 ## **Conclusion**
 
 The project provides a practical overview that the lessons can not. All goals were met despite some minor problems. In order to avoid some of the problems, some observations will be added.
+
 **Obs1** - Before any installation, make a backup system (snapshot). If something goes wrong, the system can get back to previous settings and not be compromised with the error.
+
 **Obs2** - Make notes of all users and passwords created. This can save you lots of troubles. (Make notes of everything basically).
